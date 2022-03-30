@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GeneralInsuranceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ClaimInfo">
+    <Key>
+      <PropertyRef Name="Claim_No" />
+    </Key>
+    <Property Name="Claim_No" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Claim_Date" Type="date" />
+    <Property Name="Approval_Result" Type="varchar" MaxLength="10" />
+    <Property Name="Claim_Amount_Approved" Type="real" />
+    <Property Name="Policy_no" Type="int" />
+  </EntityType>
+  <EntityType Name="InsurancePlanInfo">
+    <Key>
+      <PropertyRef Name="Insurance_Id" />
+    </Key>
+    <Property Name="Insurance_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Insurance_Type" Type="varchar" MaxLength="20" />
+    <Property Name="Insurance_No_Of_Years" Type="int" />
+    <Property Name="Vehicle_id" Type="int" />
+    <Property Name="Regist_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="PolicyInfoTB">
+    <Key>
+      <PropertyRef Name="Policy_Number" />
+    </Key>
+    <Property Name="Insurance_id" Type="int" />
+    <Property Name="Vehicle_id" Type="int" />
+    <Property Name="Policy_Number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Claim_Amount" Type="real" />
+  </EntityType>
+  <EntityType Name="RegistrationInfo">
+    <Key>
+      <PropertyRef Name="Reg_Id" />
+    </Key>
+    <Property Name="Reg_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Reg_Name" Type="varchar" MaxLength="40" />
+    <Property Name="Reg_Email" Type="varchar" MaxLength="40" />
+    <Property Name="Reg_DOB" Type="date" />
+    <Property Name="Reg_Phone" Type="real" />
+    <Property Name="Reg_Address" Type="varchar" MaxLength="70" />
+    <Property Name="Reg_Password" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="VehicleInsuranceInfo">
+    <Key>
+      <PropertyRef Name="Vehicle_ID" />
+    </Key>
+    <Property Name="Vehicle_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Vehicle_Type" Type="varchar" MaxLength="20" />
+    <Property Name="Vehicle_Manufacturer" Type="varchar" MaxLength="20" />
+    <Property Name="Vehicle_Model" Type="varchar" MaxLength="20" />
+    <Property Name="Driving_Licence" Type="varchar" MaxLength="20" />
+    <Property Name="Vehicle_DOP" Type="date" />
+    <Property Name="Vehicle_Regis_No" Type="varchar" MaxLength="20" />
+    <Property Name="Vehicle_Engine_No" Type="varchar" MaxLength="10" />
+    <Property Name="Vehicle_Chassis_No" Type="varchar" MaxLength="20" />
+    <Property Name="Registration_Id" Type="int" />
+  </EntityType>
+  <Association Name="FK__ClaimInfo__Polic__3C69FB99">
+    <End Role="PolicyInfoTB" Type="Self.PolicyInfoTB" Multiplicity="0..1" />
+    <End Role="ClaimInfo" Type="Self.ClaimInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PolicyInfoTB">
+        <PropertyRef Name="Policy_Number" />
+      </Principal>
+      <Dependent Role="ClaimInfo">
+        <PropertyRef Name="Policy_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Insurance__Regis__2A4B4B5E">
+    <End Role="RegistrationInfo" Type="Self.RegistrationInfo" Multiplicity="0..1" />
+    <End Role="InsurancePlanInfo" Type="Self.InsurancePlanInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegistrationInfo">
+        <PropertyRef Name="Reg_Id" />
+      </Principal>
+      <Dependent Role="InsurancePlanInfo">
+        <PropertyRef Name="Regist_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Insurance__Vehic__29572725">
+    <End Role="VehicleInsuranceInfo" Type="Self.VehicleInsuranceInfo" Multiplicity="0..1" />
+    <End Role="InsurancePlanInfo" Type="Self.InsurancePlanInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleInsuranceInfo">
+        <PropertyRef Name="Vehicle_ID" />
+      </Principal>
+      <Dependent Role="InsurancePlanInfo">
+        <PropertyRef Name="Vehicle_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PolicyInf__Insur__38996AB5">
+    <End Role="InsurancePlanInfo" Type="Self.InsurancePlanInfo" Multiplicity="0..1" />
+    <End Role="PolicyInfoTB" Type="Self.PolicyInfoTB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InsurancePlanInfo">
+        <PropertyRef Name="Insurance_Id" />
+      </Principal>
+      <Dependent Role="PolicyInfoTB">
+        <PropertyRef Name="Insurance_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PolicyInf__Vehic__398D8EEE">
+    <End Role="VehicleInsuranceInfo" Type="Self.VehicleInsuranceInfo" Multiplicity="0..1" />
+    <End Role="PolicyInfoTB" Type="Self.PolicyInfoTB" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VehicleInsuranceInfo">
+        <PropertyRef Name="Vehicle_ID" />
+      </Principal>
+      <Dependent Role="PolicyInfoTB">
+        <PropertyRef Name="Vehicle_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VehicleIn__Regis__267ABA7A">
+    <End Role="RegistrationInfo" Type="Self.RegistrationInfo" Multiplicity="0..1" />
+    <End Role="VehicleInsuranceInfo" Type="Self.VehicleInsuranceInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegistrationInfo">
+        <PropertyRef Name="Reg_Id" />
+      </Principal>
+      <Dependent Role="VehicleInsuranceInfo">
+        <PropertyRef Name="Registration_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GeneralInsuranceModelStoreContainer">
+    <EntitySet Name="ClaimInfo" EntityType="Self.ClaimInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InsurancePlanInfo" EntityType="Self.InsurancePlanInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PolicyInfoTB" EntityType="Self.PolicyInfoTB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegistrationInfo" EntityType="Self.RegistrationInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VehicleInsuranceInfo" EntityType="Self.VehicleInsuranceInfo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ClaimInfo__Polic__3C69FB99" Association="Self.FK__ClaimInfo__Polic__3C69FB99">
+      <End Role="PolicyInfoTB" EntitySet="PolicyInfoTB" />
+      <End Role="ClaimInfo" EntitySet="ClaimInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Insurance__Regis__2A4B4B5E" Association="Self.FK__Insurance__Regis__2A4B4B5E">
+      <End Role="RegistrationInfo" EntitySet="RegistrationInfo" />
+      <End Role="InsurancePlanInfo" EntitySet="InsurancePlanInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Insurance__Vehic__29572725" Association="Self.FK__Insurance__Vehic__29572725">
+      <End Role="VehicleInsuranceInfo" EntitySet="VehicleInsuranceInfo" />
+      <End Role="InsurancePlanInfo" EntitySet="InsurancePlanInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PolicyInf__Insur__38996AB5" Association="Self.FK__PolicyInf__Insur__38996AB5">
+      <End Role="InsurancePlanInfo" EntitySet="InsurancePlanInfo" />
+      <End Role="PolicyInfoTB" EntitySet="PolicyInfoTB" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PolicyInf__Vehic__398D8EEE" Association="Self.FK__PolicyInf__Vehic__398D8EEE">
+      <End Role="VehicleInsuranceInfo" EntitySet="VehicleInsuranceInfo" />
+      <End Role="PolicyInfoTB" EntitySet="PolicyInfoTB" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VehicleIn__Regis__267ABA7A" Association="Self.FK__VehicleIn__Regis__267ABA7A">
+      <End Role="RegistrationInfo" EntitySet="RegistrationInfo" />
+      <End Role="VehicleInsuranceInfo" EntitySet="VehicleInsuranceInfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
