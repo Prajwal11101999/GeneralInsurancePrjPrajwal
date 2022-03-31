@@ -64,7 +64,7 @@ namespace WebApplication1.Controllers
                 else
                 {
                     Session["username"] = reg.Reg_Name;
-                    return RedirectToAction("Index");
+                    return RedirectToAction("BuyInsurance");
                 }
             }
             return View();
@@ -77,7 +77,21 @@ namespace WebApplication1.Controllers
         public ActionResult Reset()
         {
             ModelState.Clear();
-            return RedirectToAction("Index", "Login");
+            return RedirectToAction("Login", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult BuyInsurance()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult BuyInsurance(VehicleInsuranceInfo vif)
+        {
+            gie.VehicleInsuranceInfoes.Add(vif);
+            gie.SaveChanges();
+            return RedirectToAction("Index");
         }
 
     }

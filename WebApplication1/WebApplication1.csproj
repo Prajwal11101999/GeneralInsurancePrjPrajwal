@@ -219,6 +219,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\RegistrationDetails.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\BuyInsurance.cshtml" />
+    <Content Include="Views\Home\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
