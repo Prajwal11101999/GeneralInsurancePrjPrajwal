@@ -140,6 +140,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GeneralInsuranceContext.cs" />
+    <Compile Include="Models\LoginInfo.cs" />
     <Compile Include="Models\RegistrationInfo.cs" />
     <Compile Include="Models\VehicleInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -181,8 +182,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\RegistrationDetails.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\BuyInsurance.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

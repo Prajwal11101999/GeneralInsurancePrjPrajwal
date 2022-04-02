@@ -1,4 +1,4 @@
-﻿@model WebApplication3.Models.RegistrationInfo
+﻿@model WebApplication3.Models.LoginInfo
 @{
     ViewBag.Title = "Login";
 }
@@ -6,26 +6,26 @@
 <h2>Login</h2>
 
 <div class="row">
-    <div class="col-md-3 col-md-offset-3">
-        <div>
+    <div class="col-md-3 col-md-offset-5">
+        <div style="border:5px black ridge; padding:10px;">
             @using (Html.BeginForm("Login", "Home", FormMethod.Post))
             {
-                <table height="200" width="500">
-                    @*<tr>
-                        <th>LOGIN</th>
-                    </tr>*@
+                <table height="200">
                     <tr>
-                        <td>@Html.LabelFor(model => model.Registration_EmailAddress)</td>
+                        <th>LOGIN</th>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Email)</td>
                         <td>
-                            @Html.TextBoxFor(model => model.Registration_EmailAddress, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Registration_EmailAddress, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                         </td>
                     </tr>
                     <tr>
-                        <td>@Html.LabelFor(model => model.Registration_Password)</td>
+                        <td>@Html.LabelFor(model => model.Password)</td>
                         <td>
-                            @Html.EditorFor(model => model.Registration_Password, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Registration_Password, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                             @ViewBag.ErrorMessage
                         </td>
                     </tr>
@@ -33,12 +33,12 @@
                         <td></td>
                         <td>
                             <input type="submit" value="Login" class="btn btn-info" />
-                            <a href="/Home/Reset" class="btn btn-info">Reset</a>
+                            <a href="/Home/Reset" class="btn btn-danger">Reset</a>
                             <a href="/Home/RegistrationDetails" class="btn btn-danger">New User</a>
                         </td>
                     </tr>
                 </table>
-             }
+            }
         </div>
     </div>
 </div>

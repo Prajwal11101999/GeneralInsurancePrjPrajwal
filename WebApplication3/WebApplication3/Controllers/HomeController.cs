@@ -52,12 +52,15 @@ namespace WebApplication3.Controllers
         {
             return View();
         }
+        public static int s;
         [HttpPost]
-        public ActionResult Login(RegistrationInfo reg)
+        public ActionResult Login(LoginInfo li)
         {
             if (ModelState.IsValid == true)
             {
-                var credentials = gic.RegistrationInfos.Where(model => model.Registration_EmailAddress == reg.Registration_EmailAddress && model.Registration_Password == reg.Registration_Password).FirstOrDefault();
+                // var s = gic.RegistrationInfos.Find(li.Email); 
+                var credentials = gic.RegistrationInfos.Where(model => model.Registration_EmailAddress == li.Email && model.Registration_Password == li.Password).FirstOrDefault();
+                s = credentials.Registration_ID;
                 if (credentials == null)
                 {
                     ViewBag.ErrorMessage = "Login Failed";
@@ -65,7 +68,6 @@ namespace WebApplication3.Controllers
                 }
                 else
                 {
-                    Session["username"] = reg.Registration_Name;
                     return RedirectToAction("BuyInsurance");
                 }
             }
@@ -87,7 +89,10 @@ namespace WebApplication3.Controllers
         [HttpPost]
         public ActionResult BuyInsurance(VehicleInfo vf)
         {
-            gic.VehicleInfos.Add(vf);
+            //gic.VehicleInfos.Add(vf);
+            //gic.SaveChanges();
+            VehicleInfo vehicleInfo = gic.VehicleInfos.Add(vf);
+            vehicleInfo.Registration_Id = s;
             gic.SaveChanges();
             return RedirectToAction("Index");
         }
