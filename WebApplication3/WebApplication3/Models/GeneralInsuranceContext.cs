@@ -16,5 +16,6 @@ namespace WebApplication3.Models
 
         public DbSet<RegistrationInfo> RegistrationInfos { get; set; }
         public DbSet<VehicleInfo> VehicleInfos { get; set; }
+        public DbSet<InsurancePlanInfo> InsurancePlanInfos { get; set; }
     }
 }

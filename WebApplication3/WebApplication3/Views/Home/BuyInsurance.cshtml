@@ -15,6 +15,7 @@
         <h4>VehicleInfo</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
         <div class="form-group">
             @Html.LabelFor(model => model.Vehicle_Type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -22,7 +23,17 @@
                 @Html.ValidationMessageFor(model => model.Vehicle_Type, "", new { @class = "text-danger" })
             </div>
         </div>
-
+            @*
+        <table>
+            <tr class="form-group">
+                <td><label for="Vehicle_Type">Vehicle Type</label></td>
+                <td>
+                    <input type="checkbox" name="Type" />4 Wheeler
+                    <input type="checkbox" name="Type" />2 Wheeler
+                </td>
+            </tr>
+        </table>
+            *@
         <div class="form-group">
             @Html.LabelFor(model => model.Vehicle_Manufacturer, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

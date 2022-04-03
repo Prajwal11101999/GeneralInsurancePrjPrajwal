@@ -6,11 +6,11 @@
 <h2>Login</h2>
 
 <div class="row">
-    <div class="col-md-3 col-md-offset-5">
-        <div style="border:5px black ridge; padding:10px;">
+    <div class="col-md-3 col-md-offset-3">
+        <div>
             @using (Html.BeginForm("Login", "Home", FormMethod.Post))
             {
-                <table height="200">
+                <table height="200" width="500">
                     <tr>
                         <th>LOGIN</th>
                     </tr>
@@ -26,6 +26,10 @@
                         <td>
                             @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             @ViewBag.ErrorMessage
                         </td>
                     </tr>
@@ -33,7 +37,7 @@
                         <td></td>
                         <td>
                             <input type="submit" value="Login" class="btn btn-info" />
-                            <a href="/Home/Reset" class="btn btn-danger">Reset</a>
+                            <a href="/Home/Reset" class="btn btn-info">Reset</a>
                             <a href="/Home/RegistrationDetails" class="btn btn-danger">New User</a>
                         </td>
                     </tr>

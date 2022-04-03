@@ -58,9 +58,7 @@ namespace WebApplication3.Controllers
         {
             if (ModelState.IsValid == true)
             {
-                // var s = gic.RegistrationInfos.Find(li.Email); 
                 var credentials = gic.RegistrationInfos.Where(model => model.Registration_EmailAddress == li.Email && model.Registration_Password == li.Password).FirstOrDefault();
-                s = credentials.Registration_ID;
                 if (credentials == null)
                 {
                     ViewBag.ErrorMessage = "Login Failed";
@@ -68,6 +66,7 @@ namespace WebApplication3.Controllers
                 }
                 else
                 {
+                    s = credentials.Registration_ID;
                     return RedirectToAction("BuyInsurance");
                 }
             }
@@ -86,6 +85,7 @@ namespace WebApplication3.Controllers
             return View();
         }
 
+        public static int d;
         [HttpPost]
         public ActionResult BuyInsurance(VehicleInfo vf)
         {
@@ -94,9 +94,27 @@ namespace WebApplication3.Controllers
             VehicleInfo vehicleInfo = gic.VehicleInfos.Add(vf);
             vehicleInfo.Registration_Id = s;
             gic.SaveChanges();
-            return RedirectToAction("Index");
+            d = vehicleInfo.Vehicle_ID;
+            return RedirectToAction("InsuranceDetails");
         }
 
+        [HttpGet]
+        public ActionResult InsuranceDetails()
+        {
+            return View();
+        }
+
+        public static int f;
+        [HttpPost]
+        public ActionResult InsuranceDetails(InsurancePlanInfo ipi)
+        {
+            InsurancePlanInfo insurancePlanInfo = gic.InsurancePlanInfos.Add(ipi);
+            insurancePlanInfo.Vehicle_Id = d;
+            insurancePlanInfo.Registration_Id = s;
+            gic.SaveChanges();
+            f = insurancePlanInfo.InsurancePlan_ID;
+            return RedirectToAction("Index");
+        }
 
     }
 }

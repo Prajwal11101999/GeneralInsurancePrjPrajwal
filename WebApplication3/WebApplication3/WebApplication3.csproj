@@ -138,8 +138,13 @@
     <Compile Include="Migrations\202204011841047_ThirdRefreshAdd.Designer.cs">
       <DependentUpon>202204011841047_ThirdRefreshAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204030502196_ThirdTableAdded.cs" />
+    <Compile Include="Migrations\202204030502196_ThirdTableAdded.Designer.cs">
+      <DependentUpon>202204030502196_ThirdTableAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GeneralInsuranceContext.cs" />
+    <Compile Include="Models\InsurancePlanInfo.cs" />
     <Compile Include="Models\LoginInfo.cs" />
     <Compile Include="Models\RegistrationInfo.cs" />
     <Compile Include="Models\VehicleInfo.cs" />
@@ -184,6 +189,7 @@
     <Content Include="Views\Home\RegistrationDetails.cshtml" />
     <Content Include="Views\Home\BuyInsurance.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\InsuranceDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -207,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204011841047_ThirdRefreshAdd.resx">
       <DependentUpon>202204011841047_ThirdRefreshAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204030502196_ThirdTableAdded.resx">
+      <DependentUpon>202204030502196_ThirdTableAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
