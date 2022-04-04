@@ -275,17 +275,20 @@ namespace WebApplication3.Controllers
         [HttpGet]
         public ActionResult ClaimProcedure()
         {
+            PolicyInfo pi = (from pit in gic.PolicyInfos
+                             where pit.Registration_Id == s
+                             select pit).FirstOrDefault();
             ClaimInfo ci = (from st in gic.ClaimInfos
                      where st.Registration_Id == s
                      select st).FirstOrDefault();
-            if (ci == null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("ClaimPage");
-            }
+                if (ci == null)
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("ClaimPage");
+                }
         }
 
         public static int j;
@@ -329,6 +332,5 @@ namespace WebApplication3.Controllers
             gic.SaveChanges();
             return RedirectToAction("UserPage");
         }
-
     }
 }
