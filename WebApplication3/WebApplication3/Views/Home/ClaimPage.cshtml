@@ -1,0 +1,89 @@
+﻿@model WebApplication3.Models.ClaimInfo
+
+@{
+    ViewBag.Title = "ClaimPage";
+}
+
+<h2>ClaimPage</h2>
+
+<div>
+    <h4>ClaimInfo</h4>
+    <hr />
+    <dl class="media-middle">
+        <dt>
+            @Html.DisplayNameFor(model => model.Claim_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Claim_Number)
+        </dd>
+        <br />
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PolicyInfo.Policy_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PolicyInfo.Policy_Status)
+        </dd>
+        <br />
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistrationInfo.Registration_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegistrationInfo.Registration_Name)
+        </dd>
+        <br />
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Claim_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Claim_Date)
+        </dd>
+        <br />
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Claim_Reason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Claim_Reason)
+        </dd>
+        <br />
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Claim_Approval_Result)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Claim_Approval_Result)
+        </dd>
+        <br />
+
+        @*
+        <dt>
+            @Html.DisplayNameFor(model => model.Claim_Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Claim_Amount)
+        </dd>
+        *@
+        <dt>
+            @Html.DisplayNameFor(model => model.Claim_Approved_Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Claim_Approved_Amount)
+        </dd>
+        <br />
+
+    </dl>
+</div>
+<p>
+    <a href="/Home/UserPage" class="btn btn-info">User Page</a>
+</p>

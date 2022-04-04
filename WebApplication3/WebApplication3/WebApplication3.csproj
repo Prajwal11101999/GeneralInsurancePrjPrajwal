@@ -182,6 +182,10 @@
     <Compile Include="Migrations\202204040942025_Change2.Designer.cs">
       <DependentUpon>202204040942025_Change2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204041540440_AddColumn.cs" />
+    <Compile Include="Migrations\202204041540440_AddColumn.Designer.cs">
+      <DependentUpon>202204041540440_AddColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClaimInfo.cs" />
     <Compile Include="Models\GeneralInsuranceContext.cs" />
@@ -240,6 +244,8 @@
     <Content Include="Views\Home\ClaimProcedure.cshtml" />
     <Content Include="Views\Home\ClaimList.cshtml" />
     <Content Include="Views\Home\ClaimEdit.cshtml" />
+    <Content Include="Views\Home\ClaimPage.cshtml" />
+    <Content Include="Views\Home\Renewal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -296,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204040942025_Change2.resx">
       <DependentUpon>202204040942025_Change2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204041540440_AddColumn.resx">
+      <DependentUpon>202204041540440_AddColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

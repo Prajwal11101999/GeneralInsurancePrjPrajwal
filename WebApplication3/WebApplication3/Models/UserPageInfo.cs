@@ -35,7 +35,13 @@ namespace WebApplication3.Models
         [Display(Name = "Policy Amount : ")]
         public float Policy_Amount { get; set; }
 
-        [Display(Name = "Policy Status")]
+        [Display(Name = "Policy Status : ")]
         public string Policy_Status { get; set; }
+
+        [Display(Name = "Policy Issued Date : ")]
+        public DateTime Policy_IssuedDate { get; set; }
+
+        [Display(Name = "Policy Expiry Date : ")]
+        public DateTime Policy_ExpiryDate { get; set; }
     }
 }

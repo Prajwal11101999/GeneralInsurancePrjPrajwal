@@ -63,7 +63,10 @@ namespace WebApplication3.Controllers
                 // s = credentials.Registration_ID;
                 if (credentials == null)
                 {
-                    return RedirectToAction("Login");
+                    // ModelState.AddModelError(nameof(credentials.Registration_EmailAddress),"Login Failed !!!! EmailAddress or Password is Incorrect");
+                    ViewBag.ErrorMessage = "Login Failed!!!! EmailAddress or Password is Incorrect";
+                    return View();
+                    // return RedirectToAction("Login");
                 }
                 else if(credentials.Registration_EmailAddress == "prajwal.borawake85@gmail.com")
                 {
@@ -256,6 +259,8 @@ namespace WebApplication3.Controllers
             upi.Vehicle_Reg_no = vi.Vehicle_Regis_No;
             upi.Policy_Amount = pi.Policy_Amount;
             upi.Policy_Status = pi.Policy_Status;
+            upi.Policy_IssuedDate = pi.Policy_IssuedDate;
+            upi.Policy_ExpiryDate = pi.Policy_ExpiryDate;
             gic.UserPageInfos.Add(upi);
             gic.SaveChanges();
             return RedirectToAction("Login");
@@ -270,7 +275,17 @@ namespace WebApplication3.Controllers
         [HttpGet]
         public ActionResult ClaimProcedure()
         {
-            return View();
+            ClaimInfo ci = (from st in gic.ClaimInfos
+                     where st.Registration_Id == s
+                     select st).FirstOrDefault();
+            if (ci == null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("ClaimPage");
+            }
         }
 
         public static int j;
@@ -284,7 +299,35 @@ namespace WebApplication3.Controllers
             claimInfo.Registration_Id = upi.Registration_Id;
             gic.SaveChanges();
             j = claimInfo.Claim_Number;
-            return RedirectToAction("Index");
+            return RedirectToAction("ClaimPage");
+        }
+
+        public ActionResult ClaimPage()
+        {
+            ClaimInfo ci = (from st in gic.ClaimInfos
+                     where st.Registration_Id == s
+                     select st).FirstOrDefault();
+            return View(ci);
+        }
+
+        [HttpGet]
+        public ActionResult Renewal()
+        {
+            PolicyInfo pi = (from pit in gic.PolicyInfos
+                             where pit.Registration_Id == s
+                             select pit).FirstOrDefault();
+            return View(pi);
+        }
+
+        [HttpPost]
+        public ActionResult Renewal(PolicyInfo pi)
+        {
+            PolicyInfo policyInfo = gic.PolicyInfos.Find(pi.PolicyInfo_Number);
+            policyInfo.Policy_IssuedDate = pi.Policy_IssuedDate;
+            policyInfo.Policy_ExpiryDate = pi.Policy_ExpiryDate;
+            policyInfo.Policy_Status = "Pending..";
+            gic.SaveChanges();
+            return RedirectToAction("UserPage");
         }
 
     }
