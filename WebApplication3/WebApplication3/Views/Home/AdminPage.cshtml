@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebApplication3.Models.PolicyInfo>
+
+@{
+    ViewBag.Title = "AdminPage";
+}
+
+<h2>AdminPage</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InsurancePlanInfo.InsurancePlan_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleInfo.Vehicle_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PolicyInfo_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Policy_Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Policy_IssuedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Policy_ExpiryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Policy_Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsurancePlanInfo.InsurancePlan_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleInfo.Vehicle_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PolicyInfo_Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Policy_Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Policy_IssuedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Policy_ExpiryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Policy_Status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PolicyInfo_Number }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PolicyInfo_Number })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    <a href="/Home/ClaimList" class="btn btn-info">Claim List</a>
+</div>

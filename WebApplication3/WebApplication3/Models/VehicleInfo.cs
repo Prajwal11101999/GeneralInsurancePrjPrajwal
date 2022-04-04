@@ -33,6 +33,14 @@ namespace WebApplication3.Models
         [Display(Name = "Vehicle Date of Purchase : ")]
         public DateTime Vehicle_DOP { get; set; }
 
+        [Required(ErrorMessage = "How many years has been since the Vehicle purchased is required")]
+        [Display(Name = "Vehicle is how many years Old : ")]
+        public float Vehicle_No_Years_Old { get; set; }
+
+        [Required(ErrorMessage = "Vehicle Purchased Price is Required")]
+        [Display(Name = "Vehicle Purchase Price : ")]
+        public float Vehicle_Price { get; set; }
+
         [Required(ErrorMessage = "Vehicle Registration Number Cannot be Empty")]
         [Display(Name = "Vehicle Registration Number : ")]
         public string Vehicle_Regis_No { get; set; }

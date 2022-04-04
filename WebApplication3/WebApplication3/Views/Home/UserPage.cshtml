@@ -1,0 +1,76 @@
+﻿@model WebApplication3.Models.UserPageInfo
+
+@{
+    ViewBag.Title = "UserPage";
+}
+
+<h2>UserPage</h2>
+
+<div>
+    <h4>UserPageInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistrationInfo.Registration_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegistrationInfo.Registration_Name)
+        </dd>
+        *@
+        <dt>
+            @Html.DisplayNameFor(model => model.User_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Policy_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Policy_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vehicle_Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle_Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vehicle_Reg_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehicle_Reg_no)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Policy_Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Policy_Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Policy_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Policy_Status)
+        </dd>
+
+    </dl>
+</div>
+<br/>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.User_Id }) |*@
+    <a href="/Home/ClaimProcedure" class="btn btn-info">Claim Insurance</a>
+</p>

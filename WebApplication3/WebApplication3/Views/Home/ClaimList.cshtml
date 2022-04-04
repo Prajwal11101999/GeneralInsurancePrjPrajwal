@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebApplication3.Models.ClaimInfo>
+
+@{
+    ViewBag.Title = "ClaimList";
+}
+
+<h2>ClaimList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PolicyInfo.Policy_Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegistrationInfo.Registration_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Claim_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Claim_Reason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Claim_Approval_Result)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Claim_Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Claim_Approved_Amount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PolicyInfo.Policy_Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegistrationInfo.Registration_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Claim_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Claim_Reason)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Claim_Approval_Result)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Claim_Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Claim_Approved_Amount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "ClaimEdit", new { id=item.Claim_Number }) |
+            @Html.ActionLink("Delete", "ClaimDelete", new { id=item.Claim_Number })
+        </td>
+    </tr>
+}
+
+</table>

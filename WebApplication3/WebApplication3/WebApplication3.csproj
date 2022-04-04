@@ -142,11 +142,54 @@
     <Compile Include="Migrations\202204030502196_ThirdTableAdded.Designer.cs">
       <DependentUpon>202204030502196_ThirdTableAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204040437052_ForthTableAdded.cs" />
+    <Compile Include="Migrations\202204040437052_ForthTableAdded.Designer.cs">
+      <DependentUpon>202204040437052_ForthTableAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204040504294_ColumnAddedVehicleTable.cs" />
+    <Compile Include="Migrations\202204040504294_ColumnAddedVehicleTable.Designer.cs">
+      <DependentUpon>202204040504294_ColumnAddedVehicleTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204040510414_ColumnAddedVehicleTable1.cs" />
+    <Compile Include="Migrations\202204040510414_ColumnAddedVehicleTable1.Designer.cs">
+      <DependentUpon>202204040510414_ColumnAddedVehicleTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204040754143_AddColumnPolicyTable.cs" />
+    <Compile Include="Migrations\202204040754143_AddColumnPolicyTable.Designer.cs">
+      <DependentUpon>202204040754143_AddColumnPolicyTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204040809472_FifthTableAdded.cs" />
+    <Compile Include="Migrations\202204040809472_FifthTableAdded.Designer.cs">
+      <DependentUpon>202204040809472_FifthTableAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204040812232_ColumnAddedUserTable.cs" />
+    <Compile Include="Migrations\202204040812232_ColumnAddedUserTable.Designer.cs">
+      <DependentUpon>202204040812232_ColumnAddedUserTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204040849084_Change.cs" />
+    <Compile Include="Migrations\202204040849084_Change.Designer.cs">
+      <DependentUpon>202204040849084_Change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204040901003_AddColumUserTable.cs" />
+    <Compile Include="Migrations\202204040901003_AddColumUserTable.Designer.cs">
+      <DependentUpon>202204040901003_AddColumUserTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204040937457_SixthTableAdded.cs" />
+    <Compile Include="Migrations\202204040937457_SixthTableAdded.Designer.cs">
+      <DependentUpon>202204040937457_SixthTableAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204040942025_Change2.cs" />
+    <Compile Include="Migrations\202204040942025_Change2.Designer.cs">
+      <DependentUpon>202204040942025_Change2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ClaimInfo.cs" />
     <Compile Include="Models\GeneralInsuranceContext.cs" />
     <Compile Include="Models\InsurancePlanInfo.cs" />
     <Compile Include="Models\LoginInfo.cs" />
+    <Compile Include="Models\PolicyInfo.cs" />
     <Compile Include="Models\RegistrationInfo.cs" />
+    <Compile Include="Models\UserPageInfo.cs" />
     <Compile Include="Models\VehicleInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -187,9 +230,16 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\RegistrationDetails.cshtml" />
-    <Content Include="Views\Home\BuyInsurance.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\InsuranceDetails.cshtml" />
+    <Content Include="Views\Home\DisplayPolicyInfo.cshtml" />
+    <Content Include="Views\Home\AdminPage.cshtml" />
+    <Content Include="Views\Home\BuyInsurance.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Home\UserPage.cshtml" />
+    <Content Include="Views\Home\ClaimProcedure.cshtml" />
+    <Content Include="Views\Home\ClaimList.cshtml" />
+    <Content Include="Views\Home\ClaimEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -216,6 +266,36 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204030502196_ThirdTableAdded.resx">
       <DependentUpon>202204030502196_ThirdTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204040437052_ForthTableAdded.resx">
+      <DependentUpon>202204040437052_ForthTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204040504294_ColumnAddedVehicleTable.resx">
+      <DependentUpon>202204040504294_ColumnAddedVehicleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204040510414_ColumnAddedVehicleTable1.resx">
+      <DependentUpon>202204040510414_ColumnAddedVehicleTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204040754143_AddColumnPolicyTable.resx">
+      <DependentUpon>202204040754143_AddColumnPolicyTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204040809472_FifthTableAdded.resx">
+      <DependentUpon>202204040809472_FifthTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204040812232_ColumnAddedUserTable.resx">
+      <DependentUpon>202204040812232_ColumnAddedUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204040849084_Change.resx">
+      <DependentUpon>202204040849084_Change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204040901003_AddColumUserTable.resx">
+      <DependentUpon>202204040901003_AddColumUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204040937457_SixthTableAdded.resx">
+      <DependentUpon>202204040937457_SixthTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204040942025_Change2.resx">
+      <DependentUpon>202204040942025_Change2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

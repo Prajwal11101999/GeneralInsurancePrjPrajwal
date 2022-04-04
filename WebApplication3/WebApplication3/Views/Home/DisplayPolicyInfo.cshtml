@@ -1,0 +1,75 @@
+﻿@model WebApplication3.Models.PolicyInfo
+
+@{
+    ViewBag.Title = "DisplayPolicyInfo";
+}
+
+<h2>DisplayPolicyInfo</h2>
+
+<div>
+    <h4>PolicyInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*
+        <dt>
+            @Html.DisplayNameFor(model => model.InsurancePlanInfo.InsurancePlan_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InsurancePlanInfo.InsurancePlan_Type)
+        </dd>
+            
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleInfo.Vehicle_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VehicleInfo.Vehicle_Type)
+        </dd>
+            *@
+        <dt>
+            @Html.DisplayNameFor(model => model.PolicyInfo_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PolicyInfo_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Policy_Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Policy_Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Policy_IssuedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Policy_IssuedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Policy_ExpiryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Policy_ExpiryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Policy_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Policy_Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.PolicyInfo_Number }) |*@
+    @Html.ActionLink("Back to UserPage", "GetUserInfo")
+</p>
