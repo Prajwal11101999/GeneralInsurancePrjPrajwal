@@ -186,6 +186,14 @@
     <Compile Include="Migrations\202204041540440_AddColumn.Designer.cs">
       <DependentUpon>202204041540440_AddColumn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204051105070_ChangesAdded.cs" />
+    <Compile Include="Migrations\202204051105070_ChangesAdded.Designer.cs">
+      <DependentUpon>202204051105070_ChangesAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204051107147_ChangesAdded1.cs" />
+    <Compile Include="Migrations\202204051107147_ChangesAdded1.Designer.cs">
+      <DependentUpon>202204051107147_ChangesAdded1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClaimInfo.cs" />
     <Compile Include="Models\GeneralInsuranceContext.cs" />
@@ -193,6 +201,7 @@
     <Compile Include="Models\LoginInfo.cs" />
     <Compile Include="Models\PolicyInfo.cs" />
     <Compile Include="Models\RegistrationInfo.cs" />
+    <Compile Include="Models\ResetPassword.cs" />
     <Compile Include="Models\UserPageInfo.cs" />
     <Compile Include="Models\VehicleInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -246,6 +255,9 @@
     <Content Include="Views\Home\ClaimEdit.cshtml" />
     <Content Include="Views\Home\ClaimPage.cshtml" />
     <Content Include="Views\Home\Renewal.cshtml" />
+    <Content Include="Views\Home\ForgotPassword.cshtml" />
+    <Content Include="Views\Home\NewView.cshtml" />
+    <Content Include="Views\Home\ClaimError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,6 +317,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204041540440_AddColumn.resx">
       <DependentUpon>202204041540440_AddColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204051105070_ChangesAdded.resx">
+      <DependentUpon>202204051105070_ChangesAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204051107147_ChangesAdded1.resx">
+      <DependentUpon>202204051107147_ChangesAdded1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

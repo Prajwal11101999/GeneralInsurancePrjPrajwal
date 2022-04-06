@@ -1,7 +1,81 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<h3 style="font-family:'Times New Roman'"><strong><i>@ViewBag.Message</i></strong></h3>
+
+
+@section Head
+{
+    <style>
+        body {
+            background-image: url('../../image/about1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+}
+<hr />
+
+<div>
+    <h2 align="center" style="font-family:'Times New Roman'"><bold>Why Zensar Insurance?</bold></h2>
+    <br>
+    <ol style="font-family:'Times New Roman'">
+        <li>ONE OF THE LEADING COMPANY IN MARKET</li>
+        <li>LOWEST RATES IN MARKET</li>
+        <li>EXPRESS CLAIMS SERVICES FOR FREE</li>
+        <li>UNBIASED EXPERT ADVICE</li>
+        <li>HIGEST RATED INSURANCE WEBSITE</li>
+    </ol>
+    <br>
+</div>
+<body style="font-size:large">
+    <div class="aboutus" align="center">
+
+        <h3 style="font-family:'Times New Roman'"> ...Things you Need To Know... </h3>
+        <br>
+        <p style="font-size:medium">
+            Having car insurance saves you against the financial loss you might face <br>if your car was wrecked in an accident or worse, stolen
+        </p>
+
+    </div>
+
+    <div>
+        <div class="type" algin="left">
+            <h4>Comprehensive Insurance:</h4>
+            <p>
+                Covers damages to the third party, as well as your own car.<br>
+                Best for cover losses from incident like theft and natural disasters
+            </p>
+        </div>
+        <div class="type" align="right">
+            <h4>Third Party Insurance</h4>
+            <p>
+                Covers only the damages to a third party and their property.<br>
+                Best for those planning to insure the car because it's mandatory (but won't recommend that!)
+            </p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div>
+        <h3 style="font-family:'Times New Roman'"><bold> ...Additional Covers...</bold> </h3>
+        <br>
+        <li><bold>Personal Accident (PA) Cover</bold></li>
+        <p>
+            For the repair or replacement expenses of plastic, rubber, glass and other materials <br>
+            which would otherwise not be covered in a regular policy.
+        </p>
+        <br>
+        <li><bold>Engine Protection</bold></li>
+        <p>
+            For times when the monsoons are at their destructive worst, <br>
+            and leave your car's engine and your tear glands vulnerable to flooding.
+        </p>
+
+
+
+    </div>
+
+</body>

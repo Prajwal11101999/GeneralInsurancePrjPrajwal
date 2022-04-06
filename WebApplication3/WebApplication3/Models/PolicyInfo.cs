@@ -30,6 +30,9 @@ namespace WebApplication3.Models
         [Display(Name ="Policy Amount Approved : ")]
         public float Policy_Amount { get; set; }
 
+        [Display(Name = "Policy Premium to be Paid : ")]
+        public float Policy_Premium { get; set; }
+
         [Display(Name = "Policy Issued Date : ")]
         public DateTime Policy_IssuedDate { get; set; }
 

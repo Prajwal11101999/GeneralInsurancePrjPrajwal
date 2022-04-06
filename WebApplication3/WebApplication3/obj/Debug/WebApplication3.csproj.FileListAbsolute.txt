@@ -182,3 +182,5 @@ D:\Zensar_March\Day 3\Validation\WebApplication1\WebApplication3\WebApplication3
 D:\Zensar_March\Day 3\Validation\WebApplication1\WebApplication3\WebApplication3\obj\Debug\WebApplication3.Migrations.SixthTableAdded.resources
 D:\Zensar_March\Day 3\Validation\WebApplication1\WebApplication3\WebApplication3\obj\Debug\WebApplication3.Migrations.Change2.resources
 D:\Zensar_March\Day 3\Validation\WebApplication1\WebApplication3\WebApplication3\obj\Debug\WebApplication3.Migrations.AddColumn.resources
+D:\Zensar_March\Day 3\Validation\WebApplication1\WebApplication3\WebApplication3\obj\Debug\WebApplication3.Migrations.ChangesAdded.resources
+D:\Zensar_March\Day 3\Validation\WebApplication1\WebApplication3\WebApplication3\obj\Debug\WebApplication3.Migrations.ChangesAdded1.resources

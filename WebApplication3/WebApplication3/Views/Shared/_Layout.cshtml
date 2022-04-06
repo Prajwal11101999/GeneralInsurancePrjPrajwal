@@ -32,12 +32,13 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p><a href="https://www.zensar.com/">&copy; @DateTime.Now.Year - Zensar Technologies Ltd</a></p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @RenderSection("Head", required:false)
 </body>
 </html>

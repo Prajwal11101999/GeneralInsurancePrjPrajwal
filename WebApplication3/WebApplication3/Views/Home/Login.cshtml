@@ -5,6 +5,18 @@
 
 <h2>Login</h2>
 
+@section Head
+{
+    <style>
+        body {
+            background-image: url('../../image/login.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+}
+
+
 <div align="center">
     <h2 style="color:red">@ViewBag.ErrorMessage</h2>
 </div>
@@ -12,7 +24,7 @@
 <div class="row">
     <div class="col-md-3 col-md-offset-3">
         <div>
-            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+            @using (Html.BeginForm())
             {
                 <table height="200" width="500">
                     <tr>
@@ -28,7 +40,7 @@
                     <tr>
                         <td>@Html.LabelFor(model => model.Password)</td>
                         <td>
-                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                         </td>
                     </tr>
@@ -36,7 +48,7 @@
                         <td></td>
                         <td>
                             <input type="submit" value="Login" class="btn btn-info" />
-                            <a href="/Home/Reset" class="btn btn-info">Reset</a>
+                            <a href="/Home/ForgotPassword" class="btn btn-info">Forgot Password</a>
                             <a href="/Home/RegistrationDetails" class="btn btn-danger">New User</a>
                         </td>
                     </tr>

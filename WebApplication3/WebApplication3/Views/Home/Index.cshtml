@@ -2,7 +2,18 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+@section Head
+{
+    <style>
+        body {
+            background-image: url('../../image/home.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+}
+
+<div class="jumbotron" color="yellow">
     <h1>General Insurance</h1>
     <p class="lead">This is motor insurance that needs to be taken for any private car owned by an individual and is mandated by the Government of India. It covers the vehicle for damages against accidents, fire, natural disasters, theft among others and also covers for any injury to the owner.</p>
     <p><a href="https://en.wikipedia.org/wiki/Vehicle_insurance" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
@@ -42,9 +53,9 @@
         <p><a class="btn btn-default" href="https://www.investopedia.com/terms/c/comprehensive-insurance.asp">Learn more &raquo;</a></p>
         <br />
         @*
-        <div>
-            <a href="/Home/Renewal" class="btn btn-danger"><h1>Renewal Of Insurance</h1></a>
-        </div>
-            *@
+            <div>
+                <a href="/Home/Renewal" class="btn btn-danger"><h1>Renewal Of Insurance</h1></a>
+            </div>
+        *@
     </div>
 </div>

@@ -15,7 +15,8 @@ namespace WebApplication3.Models
         
         [Required(ErrorMessage ="Password Cannot be Blank")]
         [Display(Name ="Password")]
-        [DataType(DataType.Password)]
+        // []
+        // [DataType(DataType.Password)]
         public string Password { get; set; }
     }
 }

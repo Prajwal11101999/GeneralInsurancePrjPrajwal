@@ -7,8 +7,6 @@ using WebApplication3.Models;
 
 namespace WebApplication3.Controllers
 {
-
-
     public class HomeController : Controller
     {
 
@@ -42,9 +40,21 @@ namespace WebApplication3.Controllers
         [HttpPost]
         public ActionResult RegistrationDetails(RegistrationInfo reginfo)
         {
-            gic.RegistrationInfos.Add(reginfo);
-            gic.SaveChanges();
-            return RedirectToAction("Login");
+            RegistrationInfo ri = (from reg in gic.RegistrationInfos
+                                   where reg.Registration_EmailAddress == reginfo.Registration_EmailAddress
+                                   select reg).FirstOrDefault();
+
+            if(reginfo.Registration_Name == ri.Registration_Name || ri.Registration_EmailAddress == ri.Registration_EmailAddress || reginfo.Registration_Phone_No == ri.Registration_Phone_No)
+            {
+                ViewBag.ErrorMessage = "Registration Failed!!!! Already User with same Email Address or Name.";
+                return View();
+            }
+            else
+            {
+                gic.RegistrationInfos.Add(reginfo);
+                gic.SaveChanges();
+                return RedirectToAction("Login");
+            }
         }
 
         [HttpGet]
@@ -90,10 +100,41 @@ namespace WebApplication3.Controllers
             return View();
         }
 
-        public ActionResult Reset()
+        [HttpGet]
+        public ActionResult ForgotPassword()
         {
-            ModelState.Clear();
-            return RedirectToAction("Login", "Home");
+            return View();
+            //ModelState.Clear();
+            //return RedirectToAction("Login", "Home");
+        }
+
+        public static ResetPassword reset = new ResetPassword();
+        // public static int reg_id;
+        [HttpPost]
+        public ActionResult ForgotPassword(ResetPassword rp)
+        {
+            var ri = gic.RegistrationInfos.Where(model => model.Registration_EmailAddress == rp.Registration_EmailAddress).FirstOrDefault();
+            if (ri == null)
+            {
+                ViewBag.ErrorMessage = "There is no such EmailAddress Please Enter Correct EmailAddress.";
+                return View();
+            }
+            else
+            {
+                rp.Registration_ID = ri.Registration_ID;
+                reset = rp;
+                return RedirectToAction("CommitChanges");
+            }
+        }
+
+        public ActionResult CommitChanges()
+        {
+            // reg_id = ri.Registration_ID;
+            RegistrationInfo reg = gic.RegistrationInfos.Find(reset.Registration_ID);
+            reg.Registration_Password = reset.Registration_Password;
+            reg.Registration_Confirm_Password = reset.Registration_Confirm_Password;
+            gic.SaveChanges();
+            return RedirectToAction("Login");
         }
 
         [HttpGet]
@@ -169,6 +210,15 @@ namespace WebApplication3.Controllers
                 idv = price - (float)(0.5 * price);
             }
             pi.Policy_Amount = idv;
+            float z = (float)((1.970 / 100) * idv);
+            float a = (float)(0.2 * z);
+            float c = z - a;
+            float x = 100;
+            float v = 50;
+            float m = 1110;
+            float net = c + x + v + m;
+            float gst = (float)((18 / 100) * net);
+            pi.Policy_Premium = net + gst;
             pi.Policy_ExpiryDate = pi.Policy_IssuedDate.AddYears(ipi.InsurancePlan_No_Of_Years);
             pi.Policy_Status = "Pendind...";
             pi.Policy_Reason = "";
@@ -258,6 +308,7 @@ namespace WebApplication3.Controllers
             upi.Vehicle_Model = vi.Vehicle_Model;
             upi.Vehicle_Reg_no = vi.Vehicle_Regis_No;
             upi.Policy_Amount = pi.Policy_Amount;
+            upi.Policy_Premium = pi.Policy_Premium;
             upi.Policy_Status = pi.Policy_Status;
             upi.Policy_IssuedDate = pi.Policy_IssuedDate;
             upi.Policy_ExpiryDate = pi.Policy_ExpiryDate;
@@ -285,10 +336,14 @@ namespace WebApplication3.Controllers
                 {
                     return View();
                 }
-                else
+                else if(pi.Policy_Status == "Pending..." || pi.Policy_Status == "Rejected" || pi.Policy_Status == "Not Approved")
                 {
-                    return RedirectToAction("ClaimPage");
+                   return RedirectToAction("ClaimError");
                 }
+            else
+            {
+                return RedirectToAction("ClaimPage");
+            }
         }
 
         public static int j;
@@ -305,6 +360,12 @@ namespace WebApplication3.Controllers
             return RedirectToAction("ClaimPage");
         }
 
+        public ActionResult ClaimError()
+        {
+            ViewBag.ErrorMessage = "Policy Status is Pending or Rejected.";
+            return View();
+        }
+
         public ActionResult ClaimPage()
         {
             ClaimInfo ci = (from st in gic.ClaimInfos
@@ -319,7 +380,21 @@ namespace WebApplication3.Controllers
             PolicyInfo pi = (from pit in gic.PolicyInfos
                              where pit.Registration_Id == s
                              select pit).FirstOrDefault();
-            return View(pi);
+            if(pi.Policy_ExpiryDate > DateTime.Today)
+            {
+                // ViewBag.ErrorMessage = "The Policy is Still Valid No need to Renew.";
+                return RedirectToAction("NewView");
+            }
+            else
+            {
+                return View(pi);
+            }
+        }
+
+        public ActionResult NewView()
+        {
+            ViewBag.ErrorMessage = "The Policy is Still Valid No need to Renew.";
+            return View();
         }
 
         [HttpPost]
@@ -328,6 +403,7 @@ namespace WebApplication3.Controllers
             PolicyInfo policyInfo = gic.PolicyInfos.Find(pi.PolicyInfo_Number);
             policyInfo.Policy_IssuedDate = pi.Policy_IssuedDate;
             policyInfo.Policy_ExpiryDate = pi.Policy_ExpiryDate;
+            policyInfo.Policy_Amount = 0;
             policyInfo.Policy_Status = "Pending..";
             gic.SaveChanges();
             return RedirectToAction("UserPage");

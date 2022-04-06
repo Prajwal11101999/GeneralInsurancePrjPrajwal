@@ -6,11 +6,14 @@
 
 <h2>RegistrationDetails</h2>
 
+<div align="center">
+    <h2 style="color:red">@ViewBag.ErrorMessage</h2>
+</div>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>RegistrationInfo</h4>
         <hr />
@@ -58,7 +61,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Registration_Password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Registration_Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.PasswordFor(model => model.Registration_Password, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Registration_Password, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -66,7 +69,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Registration_Confirm_Password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Registration_Confirm_Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.PasswordFor(model => model.Registration_Confirm_Password, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Registration_Confirm_Password, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -85,4 +88,15 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+}
+
+@section Head
+{
+    <style>
+        body {
+            background-size: cover;
+            background-image: url('../../image/register1.jpg');
+            background-repeat: no-repeat;
+        }
+    </style>
 }

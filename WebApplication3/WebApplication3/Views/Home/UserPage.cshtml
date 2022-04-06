@@ -11,13 +11,13 @@
     <hr />
     <dl class="media-middle">
         @*
-        <dt>
-            @Html.DisplayNameFor(model => model.RegistrationInfo.Registration_Name)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.RegistrationInfo.Registration_Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.RegistrationInfo.Registration_Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.RegistrationInfo.Registration_Name)
+            </dd>
         *@
         <dt>
             @Html.DisplayNameFor(model => model.User_Name)
@@ -83,6 +83,15 @@
         <br />
 
         <dt>
+            @Html.DisplayNameFor(model => model.Policy_Premium)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Policy_Premium)
+        </dd>
+        <br />
+
+        <dt>
             @Html.DisplayNameFor(model => model.Policy_Status)
         </dt>
 
@@ -93,7 +102,7 @@
 
     </dl>
 </div>
-<br/>
+<br />
 <p>
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.User_Id }) |*@
     <a href="/Home/ClaimProcedure" class="btn btn-info">Claim Insurance</a>

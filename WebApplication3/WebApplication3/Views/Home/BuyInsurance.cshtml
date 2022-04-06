@@ -7,10 +7,10 @@
 <h2>BuyInsurance</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>VehicleInfo</h4>
         <hr />
@@ -95,14 +95,14 @@
             </div>
         </div>
         @*
-        <div class="form-group">
-            @Html.LabelFor(model => model.Registration_Id, "Registration_Id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Registration_Id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Registration_Id, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Registration_Id, "Registration_Id", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Registration_Id", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Registration_Id, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-            *@
+        *@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Submit" class="btn btn-default" />
@@ -117,4 +117,14 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+}
+@section Head
+{
+    <style>
+        body {
+            background-image: url('../../image/buyinsurance.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
 }

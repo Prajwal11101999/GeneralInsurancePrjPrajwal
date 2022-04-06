@@ -1,17 +1,54 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@{ ViewBag.Title = "Contact"; }
+
+
+
+<h3 style="font-family:Times New Roman">
+    <i>
+        <strong>
+            Feel Free To Contact Us....
+        </strong>
+    </i>
+</h3>
+@section Head
+{
+    <style>
+        body {
+            background-image: url('../../image/contact2.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<body>
+    <hr />
+    <hr style="width:50%" , size="3" color="black">
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    <div>
+
+
+        <div>
+            <address style="font-family:verdana">
+                <h3 style="font-family: Copperplate ">Address </h3>
+                <strong style="font-family:Georgia">Zensar Insurance Ltd</strong> (Corporate Headquarters)<br />
+                Plot #4, MIDC, Off Nagar Road,<br />
+                Zensar Knowledge Park,<br />
+                Kharadi, Pune 411 014,<br />
+                Maharashtra, India.<br />
+                <abbr title="Phone">Phn no:</abbr>
+                020-66074000, 020-66057500
+            </address>
+            <address>
+                <strong>Support:</strong>   <i><a href="mailto:Support@example.com">insurance.help@zensar.com</a></i><br />
+                <strong>Marketing:</strong> <i><a href="mailto:Marketing@example.com">marketing.team@zensar.com</a></i>
+            </address>
+            <hr style="width:50%" , size="3" , color=black>
+
+        </div>
+    </div>
+
+
+
+
+
+</body>
