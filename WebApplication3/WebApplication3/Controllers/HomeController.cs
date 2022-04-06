@@ -40,20 +40,28 @@ namespace WebApplication3.Controllers
         [HttpPost]
         public ActionResult RegistrationDetails(RegistrationInfo reginfo)
         {
-            RegistrationInfo ri = (from reg in gic.RegistrationInfos
+            var ri = (from reg in gic.RegistrationInfos
                                    where reg.Registration_EmailAddress == reginfo.Registration_EmailAddress
                                    select reg).FirstOrDefault();
 
-            if(reginfo.Registration_Name == ri.Registration_Name || ri.Registration_EmailAddress == ri.Registration_EmailAddress || reginfo.Registration_Phone_No == ri.Registration_Phone_No)
+            if(ri == null)//|| reginfo.Registration_Phone_No == ri.Registration_Phone_No)
             {
-                ViewBag.ErrorMessage = "Registration Failed!!!! Already User with same Email Address or Name.";
-                return View();
+                if(reginfo.Registration_DOB < DateTime.Today)
+                {
+                    gic.RegistrationInfos.Add(reginfo);
+                    gic.SaveChanges();
+                    return RedirectToAction("Login");
+                }
+                else
+                {
+                    ViewBag.ErrorMessageforDOB = "Date of Birth Cannot be bigger or equal to than todays Date";
+                    return View();
+                }
             }
             else
             {
-                gic.RegistrationInfos.Add(reginfo);
-                gic.SaveChanges();
-                return RedirectToAction("Login");
+                ViewBag.ErrorMessage = "Registration Failed!!!! Already User with same Email Address or Name.";
+                return View();
             }
         }
 
@@ -130,7 +138,9 @@ namespace WebApplication3.Controllers
         //public ActionResult CommitChanges()
         //{
         //    // reg_id = ri.Registration_ID;
-        //    RegistrationInfo reg = gic.RegistrationInfos.Find(reset.Registration_ID);
+        //    RegistrationInfo reg = (from re in gic.RegistrationInfos
+        //                            where re.Registration_ID == reset.Registration_ID
+        //                            select re).FirstOrDefault();//gic.RegistrationInfos.Find(reset.Registration_ID);
         //    reg.Registration_Password = reset.Registration_Password;
         //    reg.Registration_Confirm_Password = reset.Registration_Confirm_Password;
         //    gic.SaveChanges();

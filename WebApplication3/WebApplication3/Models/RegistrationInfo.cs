@@ -21,6 +21,7 @@ namespace WebApplication3.Models
 
         [Required(ErrorMessage = "Email Cannot be Blank")]
         [Display(Name = "Email Address : ")]
+        [DataType(DataType.EmailAddress)]
         [EmailAddress(ErrorMessage = "Enter Valid Email Address")]
         public string Registration_EmailAddress { get; set; }
 
@@ -39,13 +40,13 @@ namespace WebApplication3.Models
 
         [Required(ErrorMessage = "Password Cannot be Blank")]
         [Display(Name = "Password : ")]
-        // [DataType(DataType.Password)]
+        [DataType(DataType.Password)]
         public string Registration_Password { get; set; }
 
         [Required(ErrorMessage = "Confirm Password Cannot be Blank")]
         [Display(Name = "Confirm Password : ")]
         [Compare("Registration_Password", ErrorMessage ="Confirm Password should be same as Above Password.")]
-        // [DataType(DataType.Password)]
+        [DataType(DataType.Password)]
         public string Registration_Confirm_Password { get; set; }
     }
 }
