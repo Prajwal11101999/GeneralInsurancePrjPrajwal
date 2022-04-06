@@ -103,8 +103,20 @@
     </dl>
 </div>
 <br />
+
+
+@if(Model.Policy_Status == "Pending..." || Model.Policy_Status == "Rejected" || Model.Policy_Status == "Not Approved")
+            {
+    @ViewBag.ErrorMessage
+            }
+ @if(Model.Policy_Status == "Approved") 
+{
+<p>
+    <a href="/Home/ClaimProcedure" class="btn btn-info">Claim Insurance</a>
+</p> 
+}
+
 <p>
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.User_Id }) |*@
-    <a href="/Home/ClaimProcedure" class="btn btn-info">Claim Insurance</a>
     <a href="/Home/Renewal" class="btn btn-info">Renewal of Insurance</a>
 </p>

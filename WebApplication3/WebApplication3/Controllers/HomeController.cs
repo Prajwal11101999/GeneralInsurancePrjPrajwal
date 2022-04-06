@@ -100,42 +100,42 @@ namespace WebApplication3.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult ForgotPassword()
-        {
-            return View();
-            //ModelState.Clear();
-            //return RedirectToAction("Login", "Home");
-        }
+        //[HttpGet]
+        //public ActionResult ForgotPassword()
+        //{
+        //    return View();
+        //    //ModelState.Clear();
+        //    //return RedirectToAction("Login", "Home");
+        //}
 
-        public static ResetPassword reset = new ResetPassword();
-        // public static int reg_id;
-        [HttpPost]
-        public ActionResult ForgotPassword(ResetPassword rp)
-        {
-            var ri = gic.RegistrationInfos.Where(model => model.Registration_EmailAddress == rp.Registration_EmailAddress).FirstOrDefault();
-            if (ri == null)
-            {
-                ViewBag.ErrorMessage = "There is no such EmailAddress Please Enter Correct EmailAddress.";
-                return View();
-            }
-            else
-            {
-                rp.Registration_ID = ri.Registration_ID;
-                reset = rp;
-                return RedirectToAction("CommitChanges");
-            }
-        }
+        //public static ResetPassword reset = new ResetPassword();
+        //// public static int reg_id;
+        //[HttpPost]
+        //public ActionResult ForgotPassword(ResetPassword rp)
+        //{
+        //    var ri = gic.RegistrationInfos.Where(model => model.Registration_EmailAddress == rp.Registration_EmailAddress).FirstOrDefault();
+        //    if (ri == null)
+        //    {
+        //        ViewBag.ErrorMessage = "There is no such EmailAddress Please Enter Correct EmailAddress.";
+        //        return View();
+        //    }
+        //    else
+        //    {
+        //        rp.Registration_ID = ri.Registration_ID;
+        //        reset = rp;
+        //        return RedirectToAction("CommitChanges");
+        //    }
+        //}
 
-        public ActionResult CommitChanges()
-        {
-            // reg_id = ri.Registration_ID;
-            RegistrationInfo reg = gic.RegistrationInfos.Find(reset.Registration_ID);
-            reg.Registration_Password = reset.Registration_Password;
-            reg.Registration_Confirm_Password = reset.Registration_Confirm_Password;
-            gic.SaveChanges();
-            return RedirectToAction("Login");
-        }
+        //public ActionResult CommitChanges()
+        //{
+        //    // reg_id = ri.Registration_ID;
+        //    RegistrationInfo reg = gic.RegistrationInfos.Find(reset.Registration_ID);
+        //    reg.Registration_Password = reset.Registration_Password;
+        //    reg.Registration_Confirm_Password = reset.Registration_Confirm_Password;
+        //    gic.SaveChanges();
+        //    return RedirectToAction("Login");
+        //}
 
         [HttpGet]
         public ActionResult BuyInsurance()
@@ -276,6 +276,13 @@ namespace WebApplication3.Controllers
         {
             PolicyInfo pi = gic.PolicyInfos.Find(policyInfo.PolicyInfo_Number);
             pi.Policy_Status = policyInfo.Policy_Status;
+            pi.Policy_Amount = policyInfo.Policy_Amount;
+            gic.SaveChanges();
+            UserPageInfo upi = (from pol in gic.UserPageInfos
+                                where pol.Policy_Number == pi.PolicyInfo_Number
+                                select pol).FirstOrDefault();
+            upi.Policy_Status = pi.Policy_Status;
+            upi.Policy_Amount = policyInfo.Policy_Amount;
             gic.SaveChanges();
             return RedirectToAction("AdminPage");
         }
@@ -296,11 +303,18 @@ namespace WebApplication3.Controllers
             return RedirectToAction("ClaimList");
         }
 
+        public static int l; 
         public ActionResult GetUserInfo()
         {
-            RegistrationInfo ri = gic.RegistrationInfos.Find(s);
-            PolicyInfo pi = gic.PolicyInfos.Find(g);
-            VehicleInfo vi = gic.VehicleInfos.Find(d);
+            RegistrationInfo ri = (from reg in gic.RegistrationInfos
+                                   where reg.Registration_ID == s
+                                   select reg).FirstOrDefault();
+            PolicyInfo pi = (from reg in gic.PolicyInfos
+                                   where reg.PolicyInfo_Number == g
+                                   select reg).FirstOrDefault();
+            VehicleInfo vi = (from reg in gic.VehicleInfos
+                                   where reg.Vehicle_ID == d
+                                   select reg).FirstOrDefault();
             UserPageInfo upi = new UserPageInfo();
             upi.Registration_Id = ri.Registration_ID;
             upi.User_Name = ri.Registration_Name;
@@ -314,6 +328,7 @@ namespace WebApplication3.Controllers
             upi.Policy_ExpiryDate = pi.Policy_ExpiryDate;
             gic.UserPageInfos.Add(upi);
             gic.SaveChanges();
+            l = upi.User_Id;
             return RedirectToAction("Login");
         }
 
@@ -326,20 +341,13 @@ namespace WebApplication3.Controllers
         [HttpGet]
         public ActionResult ClaimProcedure()
         {
-            PolicyInfo pi = (from pit in gic.PolicyInfos
-                             where pit.Registration_Id == s
-                             select pit).FirstOrDefault();
             ClaimInfo ci = (from st in gic.ClaimInfos
                      where st.Registration_Id == s
                      select st).FirstOrDefault();
-                if (ci == null)
-                {
-                    return View();
-                }
-                else if(pi.Policy_Status == "Pending..." || pi.Policy_Status == "Rejected" || pi.Policy_Status == "Not Approved")
-                {
-                   return RedirectToAction("ClaimError");
-                }
+            if(ci == null)
+            {
+               return View(); ;
+            }
             else
             {
                 return RedirectToAction("ClaimPage");
@@ -404,7 +412,14 @@ namespace WebApplication3.Controllers
             policyInfo.Policy_IssuedDate = pi.Policy_IssuedDate;
             policyInfo.Policy_ExpiryDate = pi.Policy_ExpiryDate;
             policyInfo.Policy_Amount = 0;
-            policyInfo.Policy_Status = "Pending..";
+            policyInfo.Policy_Status = "Pending...";
+            UserPageInfo upi = (from ui in gic.UserPageInfos
+                                where ui.Policy_Number == pi.PolicyInfo_Number
+                                select ui).FirstOrDefault();
+            upi.Policy_IssuedDate = pi.Policy_IssuedDate;
+            upi.Policy_ExpiryDate = pi.Policy_ExpiryDate;
+            upi.Policy_Amount = 0; // pi.Policy_Amount;
+            upi.Policy_Status = "Pending...";
             gic.SaveChanges();
             return RedirectToAction("UserPage");
         }
